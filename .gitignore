@@ -1,5 +1,6 @@
 project/target/
 target/
-
+libraries
+*.idea/
 # sublime-text
 *.sublime-*

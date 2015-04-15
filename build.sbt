@@ -10,7 +10,7 @@ version <<= sbtVersion(v =>
   else error("unsupported sbt version %s" format v)
 )
 
-libraryDependencies += "com.google.javascript" % "closure-compiler" % "r1741"
+libraryDependencies += "com.google.javascript" % "closure-compiler" % "v20150315"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 
@@ -31,18 +31,18 @@ publishMavenStyle := false
 
 publishArtifact in Test := false
 
-licenses in GlobalScope += "Apache License 2.0" -> url("https://github.com/eltimn/sbt-closure/raw/master/LICENSE")
+licenses in GlobalScope += "Apache License 2.0" -> url("https://github.com/alexmnyc/sbt-closure/raw/master/LICENSE")
 
 pomExtra := (
   <scm>
-    <url>git@github.com:eltimn/sbt-closure.git</url>
-    <connection>scm:git:git@github.com:eltimn/sbt-closure.git</connection>
+    <url>git@github.com:alexmnyc/sbt-closure.git</url>
+    <connection>scm:git:git@github.com:alexmnyc/sbt-closure.git</connection>
   </scm>
   <developers>
     <developer>
-      <id>eltimn</id>
-      <name>Tim Nelson</name>
-      <url>http://eltimn.com/</url>
+      <id>alexmnyc</id>
+      <name>Alex M NYC</name>
+      <url>https://github.com/alexmnyc</url>
     </developer>
   </developers>
 )

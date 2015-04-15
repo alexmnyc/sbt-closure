@@ -20,8 +20,8 @@ trait Manifest {
 
 object Manifest extends Manifest {
   /**
-    * Get the files for a manifest, downloading the urls to a temp dir
-    */
+   * Get the files for a manifest, downloading the urls to a temp dir
+   */
   def files(manifest: File, downloadDir: File, charset: Charset): List[File] = {
     val manifestDir: File = file(manifest.getParent)
 

@@ -20,7 +20,7 @@ object SbtClosurePlugin extends Plugin {
     lazy val suffix = SettingKey[String]("suffix", "String to append to output filename (before file extension)")
   }
 
-  def closureOptionsSetting: Initialize[CompilerOptions] =
+  def closureOptionsSetting: Def.Initialize[CompilerOptions] =
     (streams, prettyPrint in closure) apply {
       (out, prettyPrint) =>
         val options = new CompilerOptions
@@ -66,8 +66,8 @@ object SbtClosurePlugin extends Plugin {
 
   private def closureCompilerTask =
     (streams, sourceDirectory in closure, resourceManaged in closure,
-     includeFilter in closure, excludeFilter in closure, charset in closure,
-     downloadDirectory in closure, closureOptions in closure, suffix in closure) map {
+      includeFilter in closure, excludeFilter in closure, charset in closure,
+      downloadDirectory in closure, closureOptions in closure, suffix in closure) map {
       (out, sources, target, include, exclude, charset, downloadDir, options, suffix) => {
         // compile changed sources
         (for {
@@ -89,12 +89,13 @@ object SbtClosurePlugin extends Plugin {
   private def closureSourcesTask =
     (sourceDirectory in closure, includeFilter in closure, excludeFilter in closure) map {
       (sourceDir, incl, excl) =>
-         sourceDir.descendantsExcept(incl, excl).get
+        sourceDir.descendantsExcept(incl, excl).get
     }
 
   private def doCompile(downloadDir: File, charset: Charset, log: Logger, options: CompilerOptions)(pair: (File, File)) = {
     val (jsm, js) = pair
     log.debug("Compiling %s" format jsm)
+    import scala.collection.JavaConversions._
     val srcFiles = Manifest.files(jsm, downloadDir, charset)
     val compiler = new Compiler(options)
     compiler.compile(srcFiles, Nil, js, log)
