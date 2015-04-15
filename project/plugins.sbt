@@ -1,14 +1,6 @@
-resolvers += Resolver.url("scalasbt", new URL(
-  "http://scalasbt.artifactoryonline.com/scalasbt/sbt-plugin-releases"))(
-  Resolver.ivyStylePatterns)
+resolvers += Resolver.url(
+  "bintray-sbt-plugin-releases",
+  url("http://dl.bintray.com/content/sbt/sbt-plugin-releases"))(
+    Resolver.ivyStylePatterns)
 
-resolvers ++= Seq(
-  "coda" at "http://repo.codahale.com"
-)
-
-
-libraryDependencies <+= sbtVersion { v =>
-  "org.scala-sbt" % "scripted-plugin" % v
-}
-
-addSbtPlugin("me.lessis" % "ls-sbt" % "0.1.3")
+addSbtPlugin("me.lessis" % "bintray-sbt" % "0.2.1")
