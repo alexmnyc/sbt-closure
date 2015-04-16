@@ -5,7 +5,7 @@ organization := "org.scala-sbt"
 name := "sbt-closure"
 
 version <<= sbtVersion(v =>
-  if(v.startsWith("0.12")) "0.2.41"
+  if(v.startsWith("0.12")) "0.2.31"
   else if(v.startsWith("0.13")) "0.2.41"
   else sys.error("unsupported sbt version %s" format v)
 )
